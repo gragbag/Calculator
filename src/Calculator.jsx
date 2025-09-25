@@ -59,16 +59,16 @@ export default function Calculator() {
 				}
 
 				const jsExpr = expr
-					.replace(/sin/g, "Math.sin")
-					.replace(/cos/g, "Math.cos")
-					.replace(/tan/g, "Math.tan")
-					.replace(/log/g, "Math.log10")
-					.replace(/ln/g, "Math.log")
-					.replace(/exp/g, "Math.exp")
+					.replace(/sin\(/g, "Math.sin(")
+					.replace(/cos\(/g, "Math.cos(")
+					.replace(/tan\(/g, "Math.tan(")
+					.replace(/log\(/g, "Math.log10(")
+					.replace(/ln\(/g, "Math.log(")
+					.replace(/exp\(/g, "Math.exp(")
+					.replace(/√\(/g, "Math.sqrt(")
 					.replace(/π/g, "Math.PI")
-					.replace(/e/g, "Math.E")
 					.replace(/\^/g, "**")
-					.replace(/√/g, "Math.sqrt");
+					.replace(/\be\b/g, "Math.E");
 
 				const evalResult = eval(jsExpr).toString(); // ⚠️ only safe locally
 				setExpression(expr);
